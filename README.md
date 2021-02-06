@@ -1,2 +1,2 @@
 # PyBenchmark
-A simple Cpu Benchmark
+A simple CPU Benchmark
