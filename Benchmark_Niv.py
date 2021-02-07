@@ -16,7 +16,7 @@ def pi_calc(n): # Using Leibniz formula to calculate Pi/4
     pi = 4 * quarter_pi # Need to multiply by four to get Pi
     print(pi)
     end_time = time.time() #stores time into variable, after executing the program
-    t_length = t1 - t0 #Difference between two values gives processing time
+    t_length = end_time - initial_time #Difference between two values gives processing time
     print(f'Calculation time: {t_length} seconds')
 
 val = int(input('Please give series length: ')) #For now, the degree of accuracy is user determined
