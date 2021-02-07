@@ -32,16 +32,29 @@
                  <nav>
                      <div class="container">
                          <a href="/" class="brand-logo">PyBenchmark</a>
-                         <ul class="right">
+                         <ul class="right hide-on-med-and-down">
                             <li><a data-target="sign_up_modal" class="modal-trigger">Sign up</a></li>
                             <li><a data-target="sign_in_modal" class="modal-trigger" >Sign in</a></li>
                             <li><a class="" href="">Sign out</a></li>
                             <li><a href="">Test CPU</a></li>
                          </ul>
+                         <ul  data-target="mobile_menu" class="right hide-on-large-only sidenav-trigger ">
+                             <li>
+                                <a>
+                                    <i class="material-icons white-text ">menu</i>
+                                </a>
+                             </li>
+                         </ul>
                      </div>
                  </nav>
              </div>
          </div>
+         <ul id="mobile_menu" class="sidenav">
+            <li><a data-target="sign_up_modal" class="modal-trigger">Sign up</a></li>
+            <li><a data-target="sign_in_modal" class="modal-trigger" >Sign in</a></li>
+            <li><a class="" href="">Sign out</a></li>
+            <li><a href="">Test CPU</a></li>
+         </ul>
          <div class="container center">
              <h1 class="center">Welcome to PyBenchmark</h1>
              <p class="center">check how fast is your CPU</p>
