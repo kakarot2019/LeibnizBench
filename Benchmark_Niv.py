@@ -19,6 +19,12 @@ def pi_calc(n): # Using Leibniz formula to calculate Pi/4
     t_length = end_time - initial_time #Difference between two values gives processing time
     print(f'Calculation time: {t_length} seconds')
 
-val = int(input('Please give series length: ')) #For now, the degree of accuracy is user determined
-pi_calc(val)
+#val = int(input('Please give series length: ')) #For now, the degree of accuracy is user determined
+
+print('Welcome to PyBench. /n Your processor will be timed for how long it takes to calculate the Leibniz formula up to 1,000,000,000 terms, which calculates Pi.')
+choice = input('Would you like to continue? ')
+if choice.upper() == 'Y':
+    pi_calc(1000000000)
+else:
+    print('Goodbye')
 
