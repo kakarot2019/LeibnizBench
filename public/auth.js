@@ -5,6 +5,7 @@ const signOutMobile = document.querySelector("#sign_out_mobile");
 var errMessageSignUp = document.querySelector("#err_message_sign_up");
 var errMessageSignIn = document.querySelector("#err_message_sign_in");
 
+
 //sign up user using email and password
 signUpForm.addEventListener('submit', (e)=>{
     //capturing control values
