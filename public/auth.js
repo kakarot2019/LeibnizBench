@@ -2,6 +2,8 @@ const signInForm = document.querySelector("#sign_in_form");
 const signUpForm = document.querySelector("#sign_up_form");
 const signOut = document.querySelector("#sign_out");
 const signOutMobile = document.querySelector("#sign_out_mobile");
+var errMessageSignUp = document.querySelector("#err_message_sign_up");
+var errMessageSignIn = document.querySelector("#err_message_sign_in");
 
 //sign up user using email and password
 signUpForm.addEventListener('submit', (e)=>{
@@ -23,13 +25,22 @@ signUpForm.addEventListener('submit', (e)=>{
             })
         })
         .then(()=>{
-            //change ui
-            console.log("registered successfully");
+            //show email
+            //clear err message after successful sign in
+            errMessageSignUp.textContent = "";
+            //reset sign in form
+            signInForm.reset();
+            //close modal after sign in
+            const modal = document.querySelector(".modal");
+            M.Modal.getInstance(modal).close();
         })
+        .catch((err)=>{
+            errMessageSignUp.textContent = err.message;
+        });
     }
     catch(err){
-        //show errors
-        console.log(err)
+        //show error
+        errMessageSignUp.textContent = err.message;
     }
 });
 
@@ -50,10 +61,22 @@ signInForm.addEventListener("submit",(e)=>{
         auth.signInWithEmailAndPassword(email,password).then(cred=>{
             console.log("logged in as : "+ cred.user.email);
         })
+        .then(()=>{
+            //clear err message after successful sign in
+            errMessageSignIn.textContent = "";
+            //reset sign in form
+            signInForm.reset();
+            //close modal after sign in
+            const modal = document.querySelector(".modal");
+            M.Modal.getInstance(modal).close();
+        })
+        .catch((err)=>{
+            errMessageSignIn.textContent = err.message;
+        });
     }
     catch(err){
-        //show errors
-        console.log(err);
+        //show error
+        errMessageSignIn.textContent = err.message;
     }
 
 });
