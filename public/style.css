@@ -1,4 +1,9 @@
 .front{
     margin-top: 10%;
-    
+}
+.signed_in{
+    display:"none";
+}
+.signed_out{
+    display:"none";
 }

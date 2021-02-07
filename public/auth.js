@@ -59,9 +59,19 @@ signInForm.addEventListener("submit",(e)=>{
 });
 //sign out user
 signOut.addEventListener('click',(e)=>{
+    e.preventDefault();
     auth.signOut();
 });
 //sign out user from small screen
 signOutMobile.addEventListener('click',(e)=>{
     auth.signOut();
 });
+
+auth.onAuthStateChanged(user=>{
+    if(user){
+        changeUi(user);
+    }
+    else{
+        changeUi(user);
+    }
+})
