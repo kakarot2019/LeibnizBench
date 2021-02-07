@@ -9,9 +9,96 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/public/style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.2.6/firebase-app.js"></script>
+    <script src="/__/firebase/8.2.6/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <script>
+        const auth = firebase.auth();
+    </script>
     <title>PyBenchmark</title>
 </head>
 <body>
-     <h1>PyBenchmark</h1>
+     <header>
+         <div class="navbar-fixed">
+             <div class="nav-wrapper dark-green">
+                 <nav>
+                     <div class="container">
+                         <a href="/" class="brand-logo">PyBenchmark</a>
+                         <ul class="right">
+                            <li><a data-target="sign_up_modal" class="modal-trigger">Sign up</a></li>
+                            <li><a data-target="sign_in_modal" class="modal-trigger" >Sign in</a></li>
+                            <li><a class="" href="">Sign out</a></li>
+                            <li><a href="">Test CPU</a></li>
+                         </ul>
+                     </div>
+                 </nav>
+             </div>
+         </div>
+         <div class="container center">
+             <h1 class="center">Welcome to PyBenchmark</h1>
+             <p class="center">check how fast is your CPU</p>
+         </div>
+     </header>
+     <div class="modal" id="sign_up_modal">
+         <div class="container">
+             <h3 class="center">
+                 Sign up
+             </h3>
+             <div class="container">
+                 <form>
+                     <div class="input-field">
+                         <input type="text" name="sign_up_username" id="sign_up_username">
+                         <label for="sign_up_username">Username</label>
+                     </div>
+                     <div class="input-field">
+                        <input type="text" name="sign_up_passwoed" id="sign_up_password">
+                        <label for="sign_up_password">Password</label>
+                    </div>
+                    <div class="row">
+                        <button class="btn col s12 waves-effect waves-light green">sign up</button>
+                    </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <div class="modal" id="sign_in_modal">
+        <div class="container">
+            <h3 class="center">
+                Sign in
+            </h3>
+            <div class="container">
+                <form>
+                    <div class="input-field">
+                        <input type="text" name="sign_in_username" id="sign_in_username">
+                        <label for="sign_in_username">Username</label>
+                    </div>
+                    <div class="input-field">
+                       <input type="text" name="sign_in_password" id="sign_in_password">
+                       <label for="sign_in_password">Password</label>
+                   </div>
+                   <div class="row">
+                       <button class="btn col s12 waves-effect waves-light green">sign in</button>
+                   </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+    $("document").ready(function(){
+        M.AutoInit();
+    });
+</script>
+<script src="public/index.js"></script>
+<script src="public/auth.js"></script>
 </html>
