@@ -1,6 +1,8 @@
-import numpy as np # Used this tutorial to install these modules for IDLE: https://youtu.be/oE4KeuVNqcQ
-import sympy as sp
+# Used this tutorial to install these modules for IDLE: https://youtu.be/oE4KeuVNqcQ
 import time
+import cpuinfo
+
+cpu = cpuinfo.get_cpu_info()['brand_raw']
 
 def pi_calc(n): # Using Leibniz formula to calculate Pi/4
     print('Processing...')
@@ -21,7 +23,9 @@ def pi_calc(n): # Using Leibniz formula to calculate Pi/4
 
 #val = int(input('Please give series length: ')) #For now, the degree of accuracy is user determined
 
-print('Welcome to PyBench. /n Your processor will be timed for how long it takes to calculate the Leibniz formula up to 1,000,000,000 terms, which calculates Pi.')
+print('Welcome to PyBench.')
+print(f'Processor: {cpu}')
+print ('Your processor will be timed for how long it takes to calculate the Leibniz formula up to 1,000,000,000 terms, which calculates Pi.')
 choice = input('Would you like to continue? ')
 if choice.upper() == 'Y':
     pi_calc(1000000000)
