@@ -7,3 +7,9 @@
 .signed_out{
     display:"none";
 }
+header{
+    background-image : url("/public/assets/header-background.png");
+    background-position: "center";
+    background-size: cover;
+    height:500px;
+}

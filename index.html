@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Compiled and minified CSS -->
+    <!-- Compiled and minified CSS
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/public/style.css">
-    <title>PyBenchmark</title>
+    <title>LeibnizBench</title>
 </head>
 <body>
      <header>
 
-         <div class="navbar-fixed">
-             <div class="nav-wrapper dark-green">
-                 <nav>
+         <div class="navbar-fixed purple darken-4">
+             <div class="nav-wrapper ">
+                 <nav class="purple darken-4">
                      <div class="container">
                          <a href="/" class="brand-logo">PyBenchmark</a>
                          <ul class="right hide-on-med-and-down">
@@ -26,6 +29,7 @@
                             <li><a data-target="sign_in_modal" class="modal-trigger signed_out" >Sign in</a></li>
                             <li><a id="sign_out" class="signed_in" href="/">Sign out</a></li>
                             <li><a href="" class="signed_in">Test CPU</a></li>
+                            <li><a data-target="add_cpu_score_modal" class="signed_in modal-trigger">Add CPU Score</a></li>
                          </ul>
                          <ul  data-target="mobile_menu" class="right hide-on-large-only sidenav-trigger ">
                              <li>
@@ -38,17 +42,18 @@
                  </nav>
              </div>
          </div>
-         <ul id="mobile_menu" class="sidenav">
-            <li><a data-target="sign_up_modal signed_out" class="modal-trigger">Sign up</a></li>
-            <li><a data-target="sign_in_modal signed_out" class="modal-trigger" >Sign in</a></li>
+         <ul id="mobile_menu" class="sidenav purple ">
+            <li><a href="#" data-target="sign_up_modal" class="modal-trigger  signed_out ">Sign up</a></li>
+            <li><a  href="#" data-target="sign_in_modal" class="modal-trigger  signed_out" >Sign in</a></li>
             <li><a id="sign_out_mobile" class="signed_in" href="/">Sign out</a></li>
-            <li><a href="" class="signed_in">Test CPU</a></li>
+            <li><a  class="signed_in">Test CPU</a></li>
+            <li><a data-target="add_cpu_score_modal" class="signed_in modal-trigger purple darken-4">Add CPU Score</a></li>
          </ul>
          <div class="container center front">
-             <h3 id="current_user"></h3>
-             <h1 class="center">Welcome to PyBenchmark</h1>
-             <p class="center p-4">check how fast is your CPU</p>
-             <button class="btn btn-outline-dark">Test CPU</button>
+             <h3 id="current_user" class="white-text"></h3>
+             <h1 class="center white-text">Welcome to PyBenchmark</h1>
+             <p class="center p-4 white-text">check how fast is your CPU</p>
+             <button class="btn btn-outline-dark purple darken-4">Test CPU</button>
          </div>
      </header>
      <div class="modal" id="sign_up_modal">
@@ -67,7 +72,7 @@
                         <label for="sign_up_password">Password</label>
                     </div>
                     <div class="row">
-                        <button class="btn col s12 waves-effect waves-light green">sign up</button>
+                        <button class="btn col s12 waves-effect waves-light purple darken-4">sign up</button>
                     </div>
                     <div class="container">
                         <span id="err_message_sign_up"></span>
@@ -92,13 +97,56 @@
                        <label for="sign_in_password">Password</label>
                    </div>
                    <div class="row">
-                       <button class="btn col s12 waves-effect waves-light green">sign in</button>
+                       <button class="btn purple darken-4 col s12 waves-effect waves-light green">sign in</button>
                    </div>
                    <div class="container">
                        <span id="err_message_sign_in"></span>
                    </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="modal" id="add_cpu_score_modal">
+        <div class="container">
+            <h3>Add Your CPU Score</h3>
+            <div class="container">
+                <form id="add_score_form">
+                    <div class="input-field">
+                        <input type="text" name="cpu_name" id="cpu_name">
+                        <label for="cpu_name">CPU Name</label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field ">
+                            <input  class="" type="number" name="cpu_score" id="cpu_score">
+                            <label for="cpu_score">Score</label>
+                            <span disabled>Seconds</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button id="add_score_button" class=" col s12 btn modal-close purple darken-4">add score</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" >
+            <h2 class="purple-text text-darken-4">Score List</h2>
+        </div>
+        <div v-for="score in scores" class="row" >
+            <div id="scoreList">
+            <div class="card col s12">
+                <div class="card-title">
+                   CPU Name: {{scores.cpu_name}}
+                </div>
+                <div class="card-content">
+                    <p> CPU Score:{{scores.cpu_score}}</p>
+                    <p>User: {{scores.email}}</p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </body>
@@ -129,6 +177,10 @@
         M.AutoInit();
     });
 </script>
+
+
 <script src="public/index.js"></script>
 <script src="public/auth.js"></script>
+<script src="public/database.js"></script>
+<script src="public/scoreList.js"></script>
 </html>

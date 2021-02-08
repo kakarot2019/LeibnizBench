@@ -21,9 +21,9 @@ signUpForm.addEventListener('submit', (e)=>{
             throw new Error("Password must be at least 6 characters long");
         }// create cpu scores collection
         auth.createUserWithEmailAndPassword(email, password).then(cred =>{
-            return database.collection('scores').doc(cred.user.uid).set({
-                cpu:[{}]
-            })
+           /* return database.collection('scores').doc(cred.user.uid).set({
+                cpu:[]
+            });*/
         })
         .then(()=>{
             //show email
